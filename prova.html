@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        /* Estilos generales */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+}
+/* Estilos del slider */
+.slider {
+  position: relative;
+  width: 200px;
+  height: 300px;
+  overflow: hidden;
+}
+.slider-container {
+  display: flex;
+  height: 100%;
+  transition: transform 0.5s ease;
+}
+.slider-container img {
+  width: 100%;
+  height: 100%;
+}
+.slider-btn {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  padding: 5px 10px;
+  background-color: #f2f2f2;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
+    </style>
+
+
+
+    <div class="slider">
+        <div class="slider-container">
+        <img src="img/20230419170840-950.jpg">
+        <img src="img/20230419171157-185.jpg">
+        </div>
+        <button class="slider-btn">Next</button>
+    </div>
+
+<script>
+    const slider = document.querySelector('.slider');
+const container = slider.querySelector('.slider-container');
+const btn = slider.querySelector('.slider-btn');
+const slides = container.querySelectorAll('img');
+const slideWidth = slider.offsetWidth;
+
+let currentSlide = 0;
+
+// Función que mueve el slider a la siguiente imagen
+function nextSlide() {
+  // Desplaza el contenedor al siguiente slide
+  container.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+  // Incrementa el contador de slides
+  currentSlide++;
+  // Si llegamos al final, volvemos al primer slide
+  if (currentSlide >= slides.length) {
+    currentSlide = 0;
+  }
+}
+
+// Evento del botón
+btn.addEventListener('click', () => {
+  nextSlide();
+  // Scroll suave al contenedor del slider para que se vea completo en pantallas pequeñas
+  slider.scrollIntoView({ behavior: 'smooth' });
+});
+
+// Función para actualizar el tamaño del slider si la ventana cambia de tamaño
+window.addEventListener('resize', () => {
+  slideWidth = slider.offsetWidth;
+  container.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+});
+
+// Función para inicializar el slider
+function initSlider() {
+  // Ajustamos el tamaño de los slides
+  slides.forEach(slide => {
+    slide.style.width = `${slideWidth}px`;
+  });
+  // Ajustamos el tamaño del contenedor para que quepan todos los slides
+  container.style.width = `${slideWidth * slides.length}px`;
+}
+
+// Inicializamos el slider al cargar la página
+initSlider();
+
+
+</script>
+</body>
+</html>

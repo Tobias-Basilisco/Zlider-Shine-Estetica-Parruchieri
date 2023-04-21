@@ -12,9 +12,11 @@
   
   .slider-thumbs {
     display: flex;
-    justify-content: left;
-    align-items: center;
+    /*justify-content: left;
+    align-items: center;*/
     margin-top: 10px;
+    transition: transform 0.5s ease;
+
   }
   
   .slider-thumbs img {
@@ -48,4 +50,15 @@
   
   .slider-next {
     right: 0;
+  }
+
+  .prova{
+    display:flex;
+    width: 100%;
+  }
+
+  .prova img {
+    display:block;
+    width: 50px;
+    height: auto;
   }
