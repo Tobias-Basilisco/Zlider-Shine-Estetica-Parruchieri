@@ -2,11 +2,12 @@ document.addEventListener("DOMContentLoaded", manager);
 
 function manager(){
 
+let mainImage = document.querySelector('.slider-main img');
 const sliderMain = document.querySelector('.slider-main');
 const sliderThumbs = document.querySelector('.slider-thumbs');
 const prevBtn = document.querySelector('.slider-prev');
 const nextBtn = document.querySelector('.slider-next');
-const thumbImages = sliderThumbs.querySelectorAll('.slider-thumbs img');
+const thumbImages = sliderThumbs.querySelectorAll('img');
 
 let currentIndex = 0;
 let totalImages = thumbImages.length;
@@ -14,8 +15,21 @@ let totalImages = thumbImages.length;
 thumbImages[currentIndex].classList.add('active');
 
 function updateImage() {
-    sliderMain.innerHTML = `<img src="${thumbImages[currentIndex].src}" alt="Imagen Principal" />`;
+    mainImage.style.opacity = 0;
+    setTimeout(() => {sliderMain.innerHTML = `<img src="${thumbImages[currentIndex].src}" alt="Immagene Principale" />`;
     updateThumbnails();
+    mainImage.style.opacity = 1;  
+    }, 500);
+    
+
+}
+
+function dissapear() {
+  mainImage.style.opacity = 0
+}
+
+function apear() {
+  mainImage.style.opacity = 1
 }
 
 function updateThumbnails() {
@@ -26,7 +40,7 @@ function updateThumbnails() {
   const thumbMargin = parseInt(getComputedStyle(thumbImages[0]).marginRight);
   const scrollLeft = currentIndex * (thumbWidth + thumbMargin);
   
-  sliderThumbs.style.transform = `translateX(-${currentIndex * (thumbWidth+thumbMargin)}px)`;
+  sliderThumbs.style.transform = `translateX(-${scrollLeft}px)`;
 }
 
 function nextImage() {
@@ -59,12 +73,6 @@ thumbImages.forEach((img, index) => {
 prevBtn.addEventListener('click', prevImage);
 nextBtn.addEventListener('click', nextImage);
 
-const prova = document.querySelector('.prova');
-let btn = document.querySelector('.btn');
-btn.addEventListener('click', scroll);
 
-function scroll() {
-prova.scrollTo(200,200)
-}
 
 }

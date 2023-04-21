@@ -4,10 +4,17 @@
     overflow: hidden;
   }
   
+.slider-main {
+  transition: opacity 0.5s ease;
+}
+
   .slider-main img {
     display: block;
     width: 100%;
     height: auto;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+
   }
   
   .slider-thumbs {
