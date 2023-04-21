@@ -5,15 +5,14 @@
   }
   
 .slider-main {
-  transition: opacity 0.5s ease;
+  opacity: 1;
+  transition: opacity 0.5s cubic-bezier( .41, 0, .59, 1 );
 }
 
   .slider-main img {
     display: block;
     width: 100%;
     height: auto;
-    opacity: 1;
-    transition: opacity 0.5s ease;
 
   }
   
@@ -22,7 +21,7 @@
     /*justify-content: left;
     align-items: center;*/
     margin-top: 10px;
-    transition: transform 0.5s ease;
+    transition: transform 0.5s cubic-bezier( .41, 0, .59, 1 );
 
   }
   

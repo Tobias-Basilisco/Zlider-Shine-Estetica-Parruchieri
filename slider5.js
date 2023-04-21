@@ -15,10 +15,10 @@ let totalImages = thumbImages.length;
 thumbImages[currentIndex].classList.add('active');
 
 function updateImage() {
-    mainImage.style.opacity = 0;
+    sliderMain.style.opacity = 0;
     setTimeout(() => {sliderMain.innerHTML = `<img src="${thumbImages[currentIndex].src}" alt="Immagene Principale" />`;
     updateThumbnails();
-    mainImage.style.opacity = 1;  
+    sliderMain.style.opacity = 1;  
     }, 500);
     
 
@@ -72,7 +72,5 @@ thumbImages.forEach((img, index) => {
 
 prevBtn.addEventListener('click', prevImage);
 nextBtn.addEventListener('click', nextImage);
-
-
 
 }
