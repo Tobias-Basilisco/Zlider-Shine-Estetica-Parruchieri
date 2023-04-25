@@ -15,79 +15,79 @@
   transition: opacity 0.5s cubic-bezier( .41, 0, .59, 1 );
 }
 
-  .slider-main img {
-    display: block;
-    width: 100%;
-    height: auto;
+.slider-main img {    display: block;
+  width: 100%;
+  height: auto;
+}
 
-  }
+.slider-thumbs {
+  display: flex;
+  margin-top: 10px;
+  transition: transform 0.5s cubic-bezier( .41, 0, .59, 1 );
+  margin-left: calc(40% - 2px)    
+}
+.slider-thumbs img {
+  margin-right: 1%;
+  margin-left: 1%;
+  margin-bottom: 2%;  
+  width: 32%;
+  height: auto;
+  object-fit: cover;
+  cursor: pointer;
+}
   
-  .slider-thumbs {
-    display: flex;
-    margin-top: 10px;
-    transition: transform 0.5s cubic-bezier( .41, 0, .59, 1 );
-    margin-left: calc(40% - 2px)
-
-    
-
-  }
+.slider-thumbs img.active {
+  border: 2px solid #000;
+}
   
-  .slider-thumbs img {
-    margin-right: 1%;
-    margin-left: 1%;
-    margin-bottom: 2%;
-    
-    width: 32%;
-    height: auto;
-    object-fit: cover;
-    cursor: pointer;
-  }
-  
-  .slider-thumbs img.active {
-    border: 2px solid #000;
-  }
-  
-  .slider-prev,
-  .slider-next {
-    position: absolute;
-    top: 50%;
-    width: auto;
-    margin-top: -22px;
-    padding: 16px;
-    color: black;
-    font-weight:100;
-    font-size: 30px;
-    cursor: pointer;
-    transition: all 0.2s cubic-bezier( .41, 0, .59, 1 );
-  }
-
-  .slider-prev:hover,
-  .slider-next:hover {
-    font-weight: bold;
-    font-size: 40px;
-    position: absolute;
-    top: 49%;
-
-
-  
-  }
-
-
-  
-  .slider-prev {
-    left: 0;
-  }
-  
-  .slider-next {
-    right: 0;
-  }
-
-/* .thumb-position {
-  background-color: aqua;
-  height: 400px;
+.slider-prev,
+.slider-next {
   position: absolute;
-  left: 280px;
-  bottom: 0px;
-} */
+  top: 40%;
+  padding: 16px;
+  color: black;
+  font-weight:100;  
+  font-size: 30px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier( .41, 0, .59, 1 );
+}
+
+.slider-next img, .slider-prev img {   
+  width: 50px;
+  transition:all 0.2s cubic-bezier( .41, 0, .59, 1 );
+}
 
 
+
+.slider-prev:hover img,
+.slider-next:hover img {
+  width: 60px
+}
+
+.slider-next {
+ position: absolute;
+  top: 40%;
+  right: 0;
+}
+
+.slider-prev img{
+  rotate: 180deg;
+}
+  
+.slider-prev {
+  left: 0;
+}
+  
+.slider-next {
+  right: 0;
+}
+
+@media (max-width:700px) {
+  .slider-prev img, .slider-next img {
+    width: 20px;    
+  }
+
+  .slider-prev:hover img, .slider-next:hover img {
+    width: 24px;
+  }
+}
