@@ -55,10 +55,24 @@
     margin-top: -22px;
     padding: 16px;
     color: black;
-    font-weight: bold;
+    font-weight:100;
     font-size: 30px;
     cursor: pointer;
+    transition: all 0.2s cubic-bezier( .41, 0, .59, 1 );
   }
+
+  .slider-prev:hover,
+  .slider-next:hover {
+    font-weight: bold;
+    font-size: 40px;
+    position: absolute;
+    top: 49%;
+
+
+  
+  }
+
+
   
   .slider-prev {
     left: 0;
