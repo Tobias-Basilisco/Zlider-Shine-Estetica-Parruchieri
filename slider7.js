@@ -8,19 +8,26 @@ const sliderThumbs = document.querySelector('.slider-thumbs');
 const prevBtn = document.querySelector('.slider-prev');
 const nextBtn = document.querySelector('.slider-next');
 const thumbImages = sliderThumbs.querySelectorAll('img');
+const aFancybox = document.querySelector('.a-fancybox');
 
 let currentIndex = 0;
 let totalImages = thumbImages.length;
-let mediaMarg = 1.5
+let mediaMarg = 1.5;
 /*per mobile mediamarg = 2*/
+let sourceLong = thumbImages[currentIndex].src;
+let source = ""
+
 
 thumbImages[currentIndex].classList.add('active');
 
+
 function updateImage() {
+    updateSource();
+    updateAFancybox();
     sliderMain.style.opacity = 0;
     setTimeout(() => {sliderMain.innerHTML = 
-      
-    `<img src="${thumbImages[currentIndex].src}" alt="Immagene Principale" />`;
+ 
+    `<img src="${source}" alt="Immagene Principale" />`;
     updateThumbnails();
     sliderMain.style.opacity = 1;  
     }, 500);
@@ -28,13 +35,16 @@ function updateImage() {
 
 }
 
-function dissapear() {
-  mainImage.style.opacity = 0
+function updateSource(){
+  sourceLong = thumbImages[currentIndex].src;
+  let parts = sourceLong.split('/');
+  source = parts.slice(-2).join('/');
 }
 
-function apear() {
-  mainImage.style.opacity = 1
+function updateAFancybox(){
+  aFancybox.href = source;
 }
+
 
 function updateThumbnails() {
   thumbImages.forEach(img => img.classList.remove('active'));
