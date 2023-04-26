@@ -109,5 +109,7 @@ window.addEventListener('resize', updateThumbnails);
 // Establece el valor inicial de la variable
 handleSizeChange(mediaQuery);
 
-
+Fancybox.bind("[data-fancybox]", {
+  // Options
+});
 }
