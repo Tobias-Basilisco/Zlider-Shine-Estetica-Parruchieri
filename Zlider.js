@@ -2,18 +2,17 @@ document.addEventListener("DOMContentLoaded", manager);
 
 function manager(){
 
-let mainImage = document.querySelector('.slider-main img');
-const sliderMain = document.querySelector('.slider-main');
-const sliderThumbs = document.querySelector('.slider-thumbs');
-const prevBtn = document.querySelector('.slider-prev');
-const nextBtn = document.querySelector('.slider-next');
-const thumbImages = sliderThumbs.querySelectorAll('img');
+const ZliderMain = document.querySelector('.Zlider-main');
+const ZliderThumbs = document.querySelector('.Zlider-thumbs');
+const prevBtn = document.querySelector('.Zlider-prev');
+const nextBtn = document.querySelector('.Zlider-next');
+const thumbImages = ZliderThumbs.querySelectorAll('img');
 const aFancybox = document.querySelector('.a-fancybox');
 
 let currentIndex = 0;
 let totalImages = thumbImages.length;
-let mediaMarg = 1.5;
-/*per mobile mediamarg = 2*/
+/* fattore aggiuntivo per correggere l'errore di scorrimento*/
+let mediaMarg = 0.7;
 let sourceLong = thumbImages[currentIndex].src;
 let source = ""
 
@@ -24,17 +23,18 @@ thumbImages[currentIndex].classList.add('active');
 function updateImage() {
     updateSource();
     updateAFancybox();
-    sliderMain.style.opacity = 0;
-    setTimeout(() => {sliderMain.innerHTML = 
+    ZliderMain.style.opacity = 0;
+    setTimeout(() => {ZliderMain.innerHTML = 
  
-    `<img src="${source}" alt="Immagene Principale" />`;
+    `<img src="${source}" alt="Immagene principale" />`;
     updateThumbnails();
-    sliderMain.style.opacity = 1;  
+    ZliderMain.style.opacity = 1;  
     }, 500);
     
 
 }
 
+/* funzione che trasforma il src assoluto in relativo */
 function updateSource(){
   sourceLong = thumbImages[currentIndex].src;
   let parts = sourceLong.split('/');
@@ -45,7 +45,7 @@ function updateAFancybox(){
   aFancybox.href = source;
 }
 
-
+/* fare scorrere le thumbnails*/
 function updateThumbnails() {
   thumbImages.forEach(img => img.classList.remove('active'));
   thumbImages[currentIndex].classList.add('active');
@@ -54,7 +54,7 @@ function updateThumbnails() {
   const thumbMargin = parseInt(getComputedStyle(thumbImages[0]).marginRight);
   const scrollLeft = currentIndex * (thumbWidth + 2*thumbMargin + mediaMarg);
   
-  sliderThumbs.style.transform = `translateX(-${scrollLeft}px)`;
+  ZliderThumbs.style.transform = `translateX(-${scrollLeft}px)`;
 }
 
 function nextImage() {
@@ -94,24 +94,20 @@ const mediaQuery = window.matchMedia('(max-width: 700px)');
 
 function handleSizeChange(event) {
   if (event.matches) {
-    // La ventana del navegador es menor o igual a 600 píxeles
-    mediaMarg = 0.5;
+    // La ventana del navegador es menor o igual a 700 píxeles
+    mediaMarg = 0.8;
   } else {
-    // La ventana del navegador es mayor a 600 píxeles
-    mediaMarg = 1.5;
+    // La ventana del navegador es mayor a 700 píxeles
+    mediaMarg = 0.7;
   }
 }
 
 // Agrega un detector de eventos para detectar cambios en el tamaño de la ventana
 mediaQuery.addEventListener('change', handleSizeChange);
-mediaQuery.addEventListener('change', updateThumbnails);
-mediaQuery.addEventListener('change', updateImage);
-
+window.addEventListener('resize', updateThumbnails);
 
 // Establece el valor inicial de la variable
 handleSizeChange(mediaQuery);
 
-Fancybox.bind("[data-fancybox]", {
-  // Options
-});
+
 }
