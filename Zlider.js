@@ -12,7 +12,7 @@ const aFancybox = document.querySelector('.a-fancybox');
 let currentIndex = 0;
 let totalImages = thumbImages.length;
 /* fattore aggiuntivo per correggere l'errore di scorrimento*/
-let mediaMarg = 0.7;
+let mediaMarg = 2/5;
 let sourceLong = thumbImages[currentIndex].src;
 let source = ""
 
@@ -95,10 +95,10 @@ const mediaQuery = window.matchMedia('(max-width: 700px)');
 function handleSizeChange(event) {
   if (event.matches) {
     // La ventana del navegador es menor o igual a 700 píxeles
-    mediaMarg = 0.8;
+    mediaMarg = 3/5;
   } else {
     // La ventana del navegador es mayor a 700 píxeles
-    mediaMarg = 0.7;
+    mediaMarg = 2/5;
   }
 }
 

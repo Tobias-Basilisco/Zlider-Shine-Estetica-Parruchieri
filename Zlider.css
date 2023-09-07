@@ -6,8 +6,10 @@
 
 .Zlider {
     position: relative;
-    width: 40%;
+    width: 360px;
     overflow: hidden;
+    margin-left: auto;
+    margin-right: auto;
   }
   
 .Zlider-main {
@@ -92,6 +94,6 @@
   }
 
   .Zlider {
-    width: 90%;
+    width: 400px;
   }
 }
